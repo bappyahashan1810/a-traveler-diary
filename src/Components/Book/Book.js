@@ -10,4 +10,3 @@ const Book = () => {
 };
 
 export default Book;
-<h1>this is book pages</h1>
