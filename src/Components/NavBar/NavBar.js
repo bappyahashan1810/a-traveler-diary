@@ -13,16 +13,18 @@ const NavBar = () => {
         setLogo(!logo);
     }
     return (
-        <div className='flex w-full justify-between items-center h-20 absolute z-10 text-white'>
+        <div className='flex w-full justify-between items-center h-20 absolute z-50 text-white bg-black'>
             <div>
                 <Link><h1 onClick={handleNav} className={logo ? 'hidden' : 'block'}>Traveler Dream</h1></Link>
             </div>
             <ul className='hidden md:flex'>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/destinations'>Destinations</Link></li>
-                <li><Link>Travel</Link></li>
+                <li><Link to='/travel'>Travel</Link></li>
                 <li><Link to=''>View</Link></li>
-                <li><Link to='/book'>Book</Link></li>
+                <li><Link to='/login'>Login</Link></li>
+                <li><Link to='/signin'>Sign In</Link></li>
+
 
             </ul>
             <div className='hidden md:flex'>

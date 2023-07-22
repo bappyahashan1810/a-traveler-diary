@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Destinations = () => {
     return (
-        <div className='w-full h-full relative'>
+        <div className='w-full h-full relative pt-20'>
             <div className='bg-gray-400 h-full w-full object-cover'>
                 <div className='mx-w-[1240px] mx-auto py-16 px-4 text-center'>
                     <h1>All inclusive Resorts</h1>
@@ -24,7 +24,7 @@ const Destinations = () => {
                 </div>
             </div>
             <div className='w-full absolute my-10'>
-                <Link to='/book'><button className='px-5 rounded-md btn mx-auto items-center  flex flex-col  justify-center'>Booking</button></Link>
+                <Link to='/travel'><button className='px-5 rounded-md btn mx-auto items-center  flex flex-col  justify-center'>Booking</button></Link>
             </div>
 
         </div>
