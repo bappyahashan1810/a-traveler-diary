@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsPerson } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { AiOutlineClose } from 'react-icons/ai'
 import { FaFacebook, FaGithub, FaInstagram, FaPinterest, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { AuthContext } from '../../Contexts/AuthProvider';
 const NavBar = () => {
+    const { user, Logout } = useContext(AuthContext);
     const [nav, setNav] = useState(false);
     const [logo, setLogo] = useState(false);
+    console.log(user);
     const handleNav = () => {
         setNav(!nav);
         setLogo(!logo);
+    }
+
+    const handleLogOut = () => {
+        Logout()
+            .then(() => { })
+            .catch(error => console.error(error))
     }
     return (
         <div className='flex w-full justify-between items-center h-20 absolute z-50 text-white bg-black'>
@@ -22,14 +31,20 @@ const NavBar = () => {
                 <li><Link to='/destinations'>Destinations</Link></li>
                 <li><Link to='/travel'>Travel</Link></li>
                 <li><Link to=''>View</Link></li>
-                <li><Link to='/login'>Login</Link></li>
-                <li><Link to='/signin'>Sign In</Link></li>
+                {
+                    user?.uid ? <li><button onClick={handleLogOut}>LogOut</button></li>
+                        :
+                        <><li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/signin'>Sign In</Link></li></>}
 
 
             </ul>
             <div className='hidden md:flex'>
-                <BiSearch className='mr-2' size={20}></BiSearch>
-                <BsPerson size={20}></BsPerson>
+                {user?.displayName && <p className='text-white mr-4'><small>{user.displayName}</small></p>}
+
+                {
+                    user?.photoURL ? <img className='w-8 h-8 rounded-full' src={user.photoURL} alt="/" />
+                        : <BsPerson size={20}></BsPerson>}
             </div>
 
             <div onClick={handleNav} className='md:hidden'>

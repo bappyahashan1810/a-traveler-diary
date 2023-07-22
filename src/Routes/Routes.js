@@ -9,6 +9,8 @@ import Practice from "../Components/Practice/Practice";
 import Practice2 from "../Components/Practice/Practice2";
 import Booking from "../Components/Booking/Booking";
 import Login from "../Components/Login/Login";
+import SignIn from "../Components/SignIn/SignIn";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -33,16 +35,20 @@ export const router = createBrowserRouter([
             {
                 path: '/places/:id',
                 loader: ({ params }) => fetch(`https://hotel-server-delta.vercel.app/places/${params.id}`),
-                element: <Book></Book>
+                element: <PrivateRoutes><Book></Book></PrivateRoutes>
             },
             {
                 path: '/hotels/:id',
-                element: <Booking></Booking>,
+                element: <PrivateRoutes><Booking></Booking></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://hotel-server-bappyahashan1810.vercel.app/hotels/${params.id}`)
             },
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/signin',
+                element: <SignIn></SignIn>
             }
 
         ]
